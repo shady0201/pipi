@@ -1,23 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.css';
+import LoginForm from './LoginForm/LoginForm';
+import RegisterForm from './Register/RegisterForm';
 function App() {
+
+  let [isShowLogin,setShowLogin] = useState(false);
+  let [bshowResgister,setShowResgister] = useState(false);
+
+  let LoginComponent = ()=>{
+    if(isShowLogin){
+      return <LoginForm bShow = {isShowLogin}></LoginForm>
+    }else{
+      return ``;
+    }
+  }
+
+  let RegisterComponent = ()=>{
+    if(bshowResgister){
+      return <RegisterForm bShow = {isShowLogin}></RegisterForm>
+    }else{
+      return ``;
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button variant="primary" onClick={()=>{setShowLogin(true)}}>LoginForm</Button>
+      <Button variant="primary" onClick={()=>{setShowResgister(true)}}>Register</Button>
+      <LoginComponent ></LoginComponent>
+      <RegisterComponent></RegisterComponent>
     </div>
   );
 }

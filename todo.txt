@@ -1,0 +1,3 @@
+1. Tạo component. Function react component
+2. Dùng boostrap.
+3. Custom style.
