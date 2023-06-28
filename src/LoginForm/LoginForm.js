@@ -3,14 +3,21 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-export default function LoginForm(bShow,) {
-    let [isShow,setIsShow] = useState(bShow);
-    
+export default function LoginForm() {
+
+  // tên state là show vì boostrap handle nút close với state tên này
+  const [show, setShow] = useState(false);
+  const handleShow = (bShow)=>{
+    setShow(bShow);
+  }
+
   return (
+
     <>
-      <Modal show={isShow} onHide={()=>{}} >
+      <Button variant="success" onClick={()=>handleShow(true)}>Login</Button>
+      <Modal show={show} onHide={()=>{handleShow(false)}} >
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Form>
@@ -30,9 +37,9 @@ export default function LoginForm(bShow,) {
                 <Form.Check type="checkbox" label="Remember Me" />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
-                Login
-            </Button>
+            <div class="d-flex justify-content-end">
+              <Button variant="primary" type="submit">Login</Button>
+            </div>
         </Form>
         </Modal.Body>
         {/* <Modal.Footer>

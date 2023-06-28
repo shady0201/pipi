@@ -4,14 +4,19 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
 
-export default function RegisterForm(bShow) {
-
-    let [isShow,setIsShow] = useState(bShow);
+export default function RegisterForm() {
+  const [show, setShow] = useState(false);
+  const handleShow = (bShow)=>{
+    setShow(bShow);
+  }
   return (
     <>
-      <Modal show={isShow} onHide={()=>{}} >
+      <Button variant="primary" onClick={()=>handleShow(true)}>
+        Register
+      </Button>
+      <Modal show={show} onHide={()=>{handleShow(false)}} >
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Create new account</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             
@@ -32,9 +37,9 @@ export default function RegisterForm(bShow) {
                 <Form.Check type="checkbox" label="Remember Me" />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
-                Login
-            </Button>
+            <div class="d-flex justify-content-end">
+              <Button variant="primary" type="submit">Register</Button>
+            </div>
         </Form>
 
         </Modal.Body>
